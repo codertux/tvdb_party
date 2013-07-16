@@ -1,8 +1,8 @@
 module TvdbParty
   class Episode
     attr_reader :client
-    attr_accessor :id, :season_number, :number, :name, :overview, :air_date, :thumb, :guest_stars, :director, :writer
-
+    attr_accessor :id, :season_number, :number, :name, :overview, :air_date, :thumb, :guest_stars, :director, :writer, :imdb_id
+    
     def initialize(client, options={})
       @client = client
       @id = options["id"]
@@ -14,6 +14,8 @@ module TvdbParty
       @director = options["Director"]
       @writer = options["Writer"]
       @series_id = options["seriesid"]
+      @imdb_id = options["IMDB_ID"]
+      
       if options["GuestStars"]
         @guest_stars = options["GuestStars"].split("|").reject(&:empty?)
       else
